@@ -4,16 +4,18 @@ const cors = require('cors')
 const app = express()
 const port = 8000
 
+const data = await dbConnect();
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
 app.get('/', cors(), (req, res) => {
-
+    res.send("Hello World");
 })
 
 app.post('/signUpData', async (req, res) => {
-    let data = await dbConnect();
+    // let data = await dbConnect();
     let {fName, lName, email, Pwd, Contact} = req.body;
     const obj = `{"FirstName":"${fName}", "LastName":"${lName}", "Email":"${email}", "Contact": "${Contact}", "Password":"${Pwd}", "Script":""}`;
     const objJson = JSON.parse(obj);
@@ -29,7 +31,7 @@ app.post('/signUpData', async (req, res) => {
 
 
 app.post('/loginData', async (req, res) => {
-    let data = await dbConnect();
+    // let data = await dbConnect();
     let {eml, pw} = req.body;
 
     let result = await data.findOne({Email: eml});
@@ -50,7 +52,7 @@ app.post('/loginData', async (req, res) => {
 
 app.post('/editor', async (req, res) => {
     console.log("Inside post of editor");
-    let data = await dbConnect();
+    // let data = await dbConnect();
     let {inText, em} = req.body;
     // console.log("The updated script in server is");
     // console.log(inText);
