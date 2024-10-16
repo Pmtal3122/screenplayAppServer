@@ -72,7 +72,7 @@ app.post('/editor', async (req, res) => {
     // res.json(updatedDb);
 })
 
-app.listen(port, () => {console.log(`Listening on port ${port}`)});
+app.listen(port, '0.0.0.0', () => {console.log(`Listening on port ${port}`)});
 
 // app.get('/loginData', (req, res) => {
 //     return res.redirect('http://localhost:3002/');
